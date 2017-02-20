@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="../resource/css/city.css">
+</head>
+<body>
+
+city:<input type="text" value="" id="city" style="width: 200px;">
+city1:<input type="text" value="" id="city1" style="width: 200px;">
+<input type="button" value="cityValue" onclick="alert($('#city').next('input[name=\'cityObj\']').val())" />
+<input type="button" value="city1Value" onclick="alert($('#city1').next('input[name=\'cityObjEnd\']').val())" />
+<script src="../resource/js/lib/jquery-1.7.1.min.js"></script>
+<script src="../resource/js/cityInter.js"></script>
+<script src="../resource/js/cityListInter.js"></script>
+<script>
+    $(function(){
+        var data = cityFlightInter; //对返回值进行转化
+        var citysFlightList = [];
+        for (var key in data) {
+            var citysFlight = [];
+            for (var i in data[key]) {
+                citysFlight.push(data[key][i]);
+            }
+            if (citysFlight.length > 0) {
+                citysFlightList.push(citysFlight);
+            }
+        }
+        var cityList = citysFlightList;
+
+        $("#city").cityContentInter("", cityList, 1);
+        $("#city1").cityContentInter("", cityList, 0);
+    });
+</script>
+</body>
+</html>
